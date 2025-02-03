@@ -1,10 +1,11 @@
 const amosDtos = require('./amos.dtos');
 const { AmoRepository } = require('../../domain/repositories/repositories');
 
-const amoCreate = async (data) => {
-    const newAmo = amosDtos.amosDtoCreate(data);
+const amoCreateCase = async (data) => {
+
+    const newAmo = new amosDtos.amosDtoCreate(data);
     const cretedAmo = await AmoRepository.createAmo(newAmo);
-    return amosDtos.amosDtoResponse(cretedAmo);
+    return new amosDtos.amosDtoResponse(cretedAmo);
 }
 
-module.exports = { amoCreate };
+module.exports = { amoCreateCase };

@@ -1,5 +1,6 @@
 class amosDtoCreate {
     constructor(data) {
+        
         this.dni = data.dni;
         this.nombre = data.nombre;
         this.apellido = data.apellido;

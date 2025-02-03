@@ -2,7 +2,7 @@ const { amos } = require('../../config/database.js').models;
 
 class AmoRepository {
     
-    async createAmo(){
+    async createAmo(data){
         return amos.create(data);
     }
 
