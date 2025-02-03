@@ -1,8 +1,8 @@
-const app = require('./src/app');
+const app = require('./src/config/app');
 const server = require('http').createServer(app);
 require('dotenv').config();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
