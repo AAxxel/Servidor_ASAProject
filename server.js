@@ -1,15 +1,12 @@
 const app = require('./src/config/app');
 const server = require('http').createServer(app);
-const sequelize = require('./src/config/database');
+const {sequelize} = require('./src/config/database');
+const {router} = require('./src/interfaces/routes/router');
 require('dotenv').config();
 
 const port = process.env.PORT;
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
-
+app.use('/api', router);
 
   const startServer = async () => {
     try {
