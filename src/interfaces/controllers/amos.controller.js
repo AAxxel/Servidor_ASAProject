@@ -39,6 +39,4 @@ const amoDelete = async (req, res) => {
     }
 }
 
-
-
 module.exports = { amoGetAll, amoCreate, amoUpdate, amoDelete };
