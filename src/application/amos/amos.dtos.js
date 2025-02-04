@@ -15,6 +15,24 @@ class amosDtoCreate {
     }
 }
 
+class amosDtoUpdate {
+    constructor(data) {
+        
+        this.idAmo = data.idAmo;
+        this.dni = data.dni;
+        this.nombre = data.nombre;
+        this.apellido = data.apellido;
+        this.sexo = data.sexo;
+        this.telefono = data.telefono;
+        this.email = data.email;
+        this.profesion = data.profesion;
+        this.direccion = data.direccion;
+        this.fechaNacimiento = data.fechaNacimiento;
+        this.estadoCivil = data.estadoCivil;
+        this.fechaRegistro = data.fechaRegistro;
+    }
+}
+
 class amosDtoResponse {
     constructor(data) {
         this.nombre = data.nombre;
@@ -24,4 +42,4 @@ class amosDtoResponse {
     }
 }
 
-module.exports = { amosDtoCreate, amosDtoResponse };
+module.exports = { amosDtoCreate, amosDtoResponse, amosDtoUpdate };
