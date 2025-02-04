@@ -1,9 +1,19 @@
 const razaDtos = require('./raza.dtos');
 const { RazaRepository } = require('../../domain/repositories/repositories');
+const { getEspecieById } = require('../../domain/services/especies.services.js');
 
 const getAllCase = async () => { 
     const list = await RazaRepository.getAll();
-    return list.map(object => new razaDtos.dtoResponse(object));
+
+    const razasConEspecies = await Promise.all(list.map(async element => {
+        var idEspecie = element.dataValues.idEspecie;
+        var datos = await getEspecieById(idEspecie);
+        console.log(datos);
+        element.dataValues.nombreEspecie = datos.nombreEspecie;
+        return element;
+    }));
+
+    return razasConEspecies.map(object => new razaDtos.dtoResponse(object.dataValues));
 }
 
 const createCase = async (data) => {

@@ -18,6 +18,7 @@ class dtoUpdate {
 class dtoResponse {
     constructor(data) {
         this.idRaza = data.idRaza;
+        this.nombreEspecie = data.nombreEspecie;
         this.nombreRaza = data.nombreRaza;
         this.size = data.size;
     }
