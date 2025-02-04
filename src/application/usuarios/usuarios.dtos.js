@@ -26,7 +26,6 @@ class dtoUpdate {
 }
 class dtoResponse {
     constructor(data) {
-        console.log(data);
         this.nombreRol = data.nombreRol;
         this.nombre = data.nombre;
         this.apellido = data.apellido;

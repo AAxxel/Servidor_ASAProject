@@ -9,10 +9,6 @@ const getAllCase = async () => {
         var idRol = element.dataValues.idRol;
         var datos = await getRolById(idRol);
         element.dataValues.nombreRol = datos.nombreRol;
-
-        console.log(element.dataValues.idRol);
-        console.log(element.dataValues.nombreRol);
-
         return element;
     }));
 
