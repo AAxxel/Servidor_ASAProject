@@ -1,5 +1,3 @@
-const { where } = require('sequelize');
-
 const { amos } = require('../../config/database.js').models;
 
 class AmoRepository {
