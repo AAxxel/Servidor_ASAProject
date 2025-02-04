@@ -1,25 +1,38 @@
-const amosDtos = require('./amos.dtos');
-const { AmoRepository } = require('../../domain/repositories/repositories');
+const usuariosDtos = require('./usuarios.dtos');
+const { UsuarioRepository } = require('../../domain/repositories/repositories.js');
+const { getRolById } = require('../../domain/services/roles.services.js');
 
-const getAllAmoCase = async () => { 
-    const amos = await AmoRepository.getAll();
-    return amos.map(amo => new amosDtos.amosDtoResponse(amo));
+const getAllCase = async () => { 
+    const list = await UsuarioRepository.getAll();
+
+    const usuariosConRoles = await Promise.all(list.map(async element => {
+        var idRol = element.dataValues.idRol;
+        var datos = await getRolById(idRol);
+        element.dataValues.nombreRol = datos.nombreRol;
+
+        console.log(element.dataValues.idRol);
+        console.log(element.dataValues.nombreRol);
+
+        return element;
+    }));
+
+    return usuariosConRoles.map(object => new usuariosDtos.dtoResponse(object.dataValues));
+};
+
+const createCase = async (data) => {
+    const object = new usuariosDtos.dtoCreate(data);
+    const createdObject = await UsuarioRepository.create(object);
+    return new usuariosDtos.dtoResponse(createdObject);
 }
 
-const amoCreateCase = async (data) => {
-    const newAmo = new amosDtos.amosDtoCreate(data);
-    const cretedAmo = await AmoRepository.createAmo(newAmo);
-    return new amosDtos.amosDtoResponse(cretedAmo);
+const updateCase = async (data) => {
+    const object = new usuariosDtos.dtoUpdate(data);
+    const updatedObject = await UsuarioRepository.update(object);
+    return new usuariosDtos.dtoResponse(updatedObject);
 }
 
-const amoUpdateCase = async (data) => {
-    const updateAmo = new amosDtos.amosDtoUpdate(data);
-    const amo = await AmoRepository.updateAmo(updateAmo);
-    return new amosDtos.amosDtoResponse(amo);
+const destroyCase = async (id) => {
+    return await UsuarioRepository.destroy(id);
 }
 
-const amoDestroy = async (id) => {
-    return await AmoRepository.destroyAmo(id);
-}
-
-module.exports = { getAllAmoCase, amoCreateCase, amoUpdateCase, amoUpdateCase, amoDestroy };
+module.exports = { getAllCase, createCase, updateCase, destroyCase };

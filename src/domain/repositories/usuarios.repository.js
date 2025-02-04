@@ -6,16 +6,20 @@ class UsuarioRepository {
         return usuarios.findAll();
     }
 
-    async createAmo(data){
+    async getById(id){
+        return usuarios.findOne({ where: { idUsuario: id } });
+    }
+
+    async create(data){
         return usuarios.create(data);
     }
 
-    async updateAmo(data){
+    async update(data){
         await usuarios.update(data, {where: {idUsuario: data.idUsuario}});
         return usuarios.findOne({ where: { idUsuario: data.idUsuario } });
     }
 
-    async destroyAmo(id){
+    async destroy(id){
         return await usuarios.destroy({ where: { idUsuario: id}});
     }
 }

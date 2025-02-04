@@ -1,6 +1,6 @@
-class amosDtoCreate {
+const { getRolById } = require('../../domain/services/roles.services.js');
+class dtoCreate {
     constructor(data) {
-        
         this.idRol = data.idRol;
         this.dni = data.dni;
         this.nombre = data.nombre;
@@ -12,10 +12,8 @@ class amosDtoCreate {
         this.fechaNacimiento = data.fechaNacimiento;
     }
 }
-
-class amosDtoUpdate {
+class dtoUpdate {
     constructor(data) {
-        
         this.idUsuario = data.idUsuario;
         this.idRol = data.idRol;
         this.dni = data.dni;
@@ -23,15 +21,13 @@ class amosDtoUpdate {
         this.apellido = data.apellido;
         this.email = data.email;
         this.telefono = data.telefono;
-        this.password = data.password;
-        this.fechaRegistro = data.fechaRegistro;
         this.fechaNacimiento = data.fechaNacimiento;
     }
 }
-
-class amosDtoResponse {
+class dtoResponse {
     constructor(data) {
-        this.rol = data.rol;
+        console.log(data);
+        this.nombreRol = data.nombreRol;
         this.nombre = data.nombre;
         this.apellido = data.apellido;
         this.email = data.email;
@@ -39,4 +35,4 @@ class amosDtoResponse {
     }
 }
 
-module.exports = { amosDtoCreate, amosDtoResponse, amosDtoUpdate };
+module.exports = { dtoCreate, dtoUpdate, dtoResponse };
