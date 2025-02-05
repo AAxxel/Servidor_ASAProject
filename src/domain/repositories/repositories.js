@@ -7,6 +7,7 @@ const MascotaRepository = require('./mascotas.repository');
 const CuidadoRepository = require('./cuidados.repository');
 const EnfermedadRepository = require('./enfermedades.repository');
 const MedicamentoRepository = require('./medicamentos.repository');
+const CuidadoMascotasRepository = require('./cuidados_mascotas.repository');
 
 module.exports = {  
     AmoRepository: AmoRepository,
@@ -17,5 +18,6 @@ module.exports = {
     MascotaRepository: MascotaRepository,
     CuidadoRepository: CuidadoRepository,
     EnfermedadRepository: EnfermedadRepository,
-    MedicamentoRepository: MedicamentoRepository
+    MedicamentoRepository: MedicamentoRepository,
+    CuidadoMascotasRepository: CuidadoMascotasRepository
  };

@@ -10,6 +10,7 @@ const mascotasRouter = require('./mascotas.router.js');
 const cuidadosRouter = require('./cuidados.router.js');
 const enfermedadesRouter = require('./enfermedades.router.js');
 const medicamentosRouter = require('./medicamentos.router.js');
+const cuidadosMascotasRouter = require('./cuidados_mascotas.router.js');
 
 router.use('/amos', amosRouter);
 router.use('/roles', rolesRouter);
@@ -20,5 +21,6 @@ router.use('/mascotas', mascotasRouter);
 router.use('/cuidados', cuidadosRouter);
 router.use('/enfermedades', enfermedadesRouter);
 router.use('/medicamentos', medicamentosRouter);
+router.use('/cuidados-mascotas', cuidadosMascotasRouter);
 
 module.exports = {router};
