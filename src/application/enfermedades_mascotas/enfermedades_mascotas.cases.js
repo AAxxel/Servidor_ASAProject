@@ -1,9 +1,21 @@
 const relacionDtos = require('./enfermedades_mascotas.dtos.js');
 const { EnfermedadMascotaRepository } = require('../../domain/repositories/repositories.js');
+const { getMascotaById } = require('../../domain/services/mascotas.services.js');
+const { getEnfermedadById } = require('../../domain/services/enfermedades.services.js');
 
 const getAllCase = async () => { 
     const list = await EnfermedadMascotaRepository.getAll();
-    return list.map(object => new relacionDtos.dtoResponse(object));
+
+    const mascotasSalida = await Promise.all(list.map(async element => {
+        var datos = await getMascotaById(element.dataValues.idMascota);
+        element.dataValues.mascota = datos;
+
+        datos = await getEnfermedadById(element.dataValues.idEnfermedad);
+        element.dataValues.enfermedad = datos;
+        return element;
+    }));
+
+    return mascotasSalida.map(object => new relacionDtos.dtoResponse(object.dataValues));
 };
 
 const createCase = async (data) => {
