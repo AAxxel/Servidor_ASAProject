@@ -23,7 +23,7 @@ class dtoUpdate {
 class dtoResponse {
     constructor(data) {
         this.idTratamiento = data.idTratamiento;
-        this.mascota = data.mascota;
+        this.info = data.info;
         this.fechaInicio = data.fechaInicio;
         this.fechaFinal = data.fechaFinal;
         this.tipoTratamiento = data.tipoTratamiento;
