@@ -6,6 +6,7 @@ const RazaRepository = require('./raza.repository');
 const MascotaRepository = require('./mascotas.repository');
 const CuidadoRepository = require('./cuidados.repository');
 const EnfermedadRepository = require('./enfermedades.repository');
+const MedicamentoRepository = require('./medicamentos.repository');
 
 module.exports = {  
     AmoRepository: AmoRepository,
@@ -15,5 +16,6 @@ module.exports = {
     RazaRepository: RazaRepository,
     MascotaRepository: MascotaRepository,
     CuidadoRepository: CuidadoRepository,
-    EnfermedadRepository: EnfermedadRepository
+    EnfermedadRepository: EnfermedadRepository,
+    MedicamentoRepository: MedicamentoRepository
  };
