@@ -2,7 +2,10 @@ const app = require('./src/config/app');
 const server = require('http').createServer(app);
 const {sequelize} = require('./src/config/database');
 const {router} = require('./src/interfaces/routes/router');
+const cors = require('cors');
 require('dotenv').config();
+
+app.use(cors());
 
 const port = process.env.PORT;
 
