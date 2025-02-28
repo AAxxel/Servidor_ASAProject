@@ -8,7 +8,6 @@ class dtoCreate {
         this.email = data.email;
         this.telefono = data.telefono;
         this.password = data.password;
-        this.fechaRegistro = data.fechaRegistro;
         this.fechaNacimiento = data.fechaNacimiento;
     }
 }
@@ -34,5 +33,17 @@ class dtoResponse {
         this.telefono = data.telefono;
     }
 }
+class dtoResponseIndividual {
+    constructor(data) {
+        this.idUsuario = data.idUsuario;
+        this.idRol = data.idRol;
+        this.nombre = data.nombre;
+        this.apellido = data.apellido;
+        this.dni = data.dni;
+        this.email = data.email;
+        this.telefono = data.telefono;
+        this.fechaNacimiento = data.fechaNacimiento;
+    }
+}
 
-module.exports = { dtoCreate, dtoUpdate, dtoResponse };
+module.exports = { dtoCreate, dtoUpdate, dtoResponse, dtoResponseIndividual };

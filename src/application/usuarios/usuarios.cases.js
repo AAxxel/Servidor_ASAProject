@@ -15,6 +15,11 @@ const getAllCase = async () => {
     return usuariosConRoles.map(object => new usuariosDtos.dtoResponse(object.dataValues));
 };
 
+const getCase = async (id) => { 
+    const getObject = await UsuarioRepository.getById(id);
+    return new usuariosDtos.dtoResponseIndividual(getObject);
+};
+
 const createCase = async (data) => {
     const object = new usuariosDtos.dtoCreate(data);
     const createdObject = await UsuarioRepository.create(object);
@@ -27,8 +32,12 @@ const updateCase = async (data) => {
     return new usuariosDtos.dtoResponse(updatedObject);
 }
 
+const desactivarCase = async (id) => {
+    return await UsuarioRepository.desactivar(id);
+}
+
 const destroyCase = async (id) => {
     return await UsuarioRepository.destroy(id);
 }
 
-module.exports = { getAllCase, createCase, updateCase, destroyCase };
+module.exports = { getCase, getAllCase, createCase, updateCase, desactivarCase, destroyCase };

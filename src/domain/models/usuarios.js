@@ -43,12 +43,18 @@ module.exports = function(sequelize, DataTypes) {
     },
     fechaRegistro: {
       type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
       allowNull: false
     },
     fechaNacimiento: {
       type: DataTypes.DATEONLY,
       allowNull: false
-    }
+    },
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+      allowNull: false
+    },
   }, {
     sequelize,
     tableName: 'usuarios',
