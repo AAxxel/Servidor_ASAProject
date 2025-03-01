@@ -4,7 +4,7 @@ class MascotaRepository {
     
     async getAll(){
         return mascotas.findAll({
-            estado: true
+            where: { estado: true }
         });
     }
 
@@ -19,6 +19,10 @@ class MascotaRepository {
     async update(data){
         await mascotas.update(data, {where: {idmascota: data.idmascota}});
         return mascotas.findOne({ where: { idmascota: data.idmascota } });
+    }
+
+    async desactivar(id){
+        return await mascotas.update({estado : false}, {where: {idmascota: id}});
     }
 
     async destroy(id){

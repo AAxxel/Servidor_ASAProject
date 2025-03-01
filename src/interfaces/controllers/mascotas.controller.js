@@ -1,4 +1,4 @@
-const { getAllCase, createCase, updateCase, destroyCase, getCase } = require('../../application/mascotas/mascotas.cases.js');
+const { getAllCase, createCase, updateCase, destroyCase, getCase, desactivarCase } = require('../../application/mascotas/mascotas.cases.js');
 const { SUCCESS, ERROR } = require('../../shared/utils/messages.http.js');
 
 const getAllController = async (req, res) => {
@@ -50,5 +50,15 @@ const deleteController = async (req, res) => {
         res.status(400).json({ error: error.message, message: ERROR.SERVER_ERROR });
     }
 }
-
-module.exports = { getAllController, getController, createController, updateController, deleteController };
+const desactivarController = async (req, res) => {
+    try {
+        const object = await desactivarCase(req.params.id);
+        if(object === 0){
+            res.status(400).json({ error: ERROR.NOT_FOUND });
+        }
+        res.status(201).json({ message: SUCCESS.DELETED });
+    } catch (error) {
+        res.status(400).json({ error: error, message: ERROR.SERVER_ERROR });
+    }
+}
+module.exports = { getAllController, getController, createController, updateController, deleteController, desactivarController };

@@ -37,8 +37,12 @@ const updateCase = async (data) => {
     return new mascotasDtos.dtoResponse(updatedObject);
 }
 
+const desactivarCase = async (id) => {
+    return await MascotaRepository.desactivar(id);
+}
+
 const destroyCase = async (id) => {
     return await MascotaRepository.destroy(id);
 }
 
-module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase };
+module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase, desactivarCase };
