@@ -24,4 +24,13 @@ class dtoResponse {
     }
 }
 
-module.exports = { dtoCreate, dtoUpdate, dtoResponse };
+class dtoResponseOnly {
+    constructor(data) {
+        this.idRaza = data.idRaza;
+        this.idEspecie = data.idEspecie;
+        this.nombreRaza = data.nombreRaza;
+        this.size = data.size;
+    }
+}
+
+module.exports = { dtoCreate, dtoUpdate, dtoResponse, dtoResponseOnly };

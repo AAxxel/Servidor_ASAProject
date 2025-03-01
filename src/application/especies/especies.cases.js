@@ -6,6 +6,11 @@ const getAllCase = async () => {
     return list.map(object => new EspeciesDtos.dtoResponse(object));
 }
 
+const getCase = async (id) => { 
+    const getObject = await EspecieRepository.getById(id);
+    return new EspeciesDtos.dtoResponse(getObject);
+};
+
 const createCase = async (data) => {
     const object = new EspeciesDtos.dtoCreate(data);
     const createdObject = await EspecieRepository.create(object);
@@ -22,4 +27,4 @@ const destroyCase = async (id) => {
     return await EspecieRepository.destroy(id);
 }
 
-module.exports = { getAllCase, createCase, updateCase, destroyCase };
+module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase };

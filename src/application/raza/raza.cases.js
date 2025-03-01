@@ -16,6 +16,11 @@ const getAllCase = async () => {
     return razasConEspecies.map(object => new razaDtos.dtoResponse(object.dataValues));
 }
 
+const getCase = async (id) => { 
+    const getObject = await RazaRepository.getById(id);
+    return new razaDtos.dtoResponseOnly(getObject);
+};
+
 const createCase = async (data) => {
     const object = new razaDtos.dtoCreate(data);
     const createdObject = await RazaRepository.create(object);
@@ -32,4 +37,4 @@ const destroyCase = async (id) => {
     return await RazaRepository.destroy(id);
 }
 
-module.exports = { getAllCase, createCase, updateCase, destroyCase };
+module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase };
