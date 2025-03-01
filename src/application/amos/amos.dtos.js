@@ -11,7 +11,6 @@ class amosDtoCreate {
         this.direccion = data.direccion;
         this.fechaNacimiento = data.fechaNacimiento;
         this.estadoCivil = data.estadoCivil;
-        this.fechaRegistro = data.fechaRegistro;
     }
 }
 
@@ -29,17 +28,34 @@ class amosDtoUpdate {
         this.direccion = data.direccion;
         this.fechaNacimiento = data.fechaNacimiento;
         this.estadoCivil = data.estadoCivil;
-        this.fechaRegistro = data.fechaRegistro;
     }
 }
 
 class amosDtoResponse {
     constructor(data) {
+        this.idAmo = data.idAmo;
         this.nombre = data.nombre;
         this.apellido = data.apellido;
         this.email = data.email;
-        this.direccion = data.direccion;
+        this.telefono = data.telefono;
     }
 }
 
-module.exports = { amosDtoCreate, amosDtoResponse, amosDtoUpdate };
+class amosDtoOnly {
+    constructor(data) {
+        this.idAmo = data.idAmo;
+        this.dni = data.dni;
+        this.nombre = data.nombre;
+        this.apellido = data.apellido;
+        this.sexo = data.sexo;
+        this.telefono = data.telefono;
+        this.email = data.email;
+        this.profesion = data.profesion;
+        this.direccion = data.direccion;
+        this.fechaNacimiento = data.fechaNacimiento;
+        this.estadoCivil = data.estadoCivil;
+        this.estado = data.estado;
+    }
+}
+
+module.exports = { amosDtoCreate, amosDtoResponse, amosDtoUpdate, amosDtoOnly };

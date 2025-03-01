@@ -43,6 +43,7 @@ class dtoResponseIndividual {
         this.email = data.email;
         this.telefono = data.telefono;
         this.fechaNacimiento = data.fechaNacimiento;
+        this.estado = data.estado;
     }
 }
 

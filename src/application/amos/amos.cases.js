@@ -6,6 +6,11 @@ const getAllAmoCase = async () => {
     return amos.map(amo => new amosDtos.amosDtoResponse(amo));
 }
 
+const getCase = async (id) => { 
+    const getObject = await AmoRepository.getById(id);
+    return new amosDtos.amosDtoOnly(getObject);
+};
+
 const amoCreateCase = async (data) => {
     const newAmo = new amosDtos.amosDtoCreate(data);
     const cretedAmo = await AmoRepository.createAmo(newAmo);
@@ -22,4 +27,8 @@ const amoDestroy = async (id) => {
     return await AmoRepository.destroyAmo(id);
 }
 
-module.exports = { getAllAmoCase, amoCreateCase, amoUpdateCase, amoUpdateCase, amoDestroy };
+const desactivarCase = async (id) => {
+    return await AmoRepository.desactivar(id);
+}
+
+module.exports = { getAllAmoCase, amoCreateCase, amoUpdateCase, amoDestroy, desactivarCase, getCase };
