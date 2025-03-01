@@ -20,6 +20,11 @@ const getAllCase = async () => {
     return mascotasSalida.map(object => new mascotasDtos.dtoResponse(object.dataValues));
 };
 
+const getCase = async (id) => { 
+    const getObject = await MascotaRepository.getById(id);
+    return new mascotasDtos.dtoUpdate(getObject);
+};
+
 const createCase = async (data) => {
     const object = new mascotasDtos.dtoCreate(data);
     const createdObject = await MascotaRepository.create(object);
@@ -36,4 +41,4 @@ const destroyCase = async (id) => {
     return await MascotaRepository.destroy(id);
 }
 
-module.exports = { getAllCase, createCase, updateCase, destroyCase };
+module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase };

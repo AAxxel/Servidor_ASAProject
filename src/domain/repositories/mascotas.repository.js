@@ -3,7 +3,9 @@ const { mascotas } = require('../../config/database.js').models;
 class MascotaRepository {
     
     async getAll(){
-        return mascotas.findAll();
+        return mascotas.findAll({
+            estado: true
+        });
     }
 
     async getById(id){

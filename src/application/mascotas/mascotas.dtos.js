@@ -1,12 +1,9 @@
-const { fechaActual } = require('../../shared/utils/fechas.js');
 class dtoCreate {
     constructor(data) {
         this.idRaza = data.idRaza;
         this.nombre = data.nombre;
         this.genero = data.genero;
         this.fechaNacimiento = data.fechaNacimiento;
-        this.fechaRegistro = fechaActual();
-        
     }
 }
 class dtoUpdate {
@@ -16,6 +13,7 @@ class dtoUpdate {
         this.nombre = data.nombre;
         this.genero = data.genero;
         this.fechaNacimiento = data.fechaNacimiento;
+        this.estado = data.estado;
     }
 }
 class dtoResponse {
@@ -25,7 +23,6 @@ class dtoResponse {
         this.nombreEspecie = data.nombreEspecie;
         this.nombre = data.nombre;
         this.genero = data.genero;
-        this.fechaNacimiento = data.fechaNacimiento;
     }
 }
 

@@ -27,10 +27,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false
     },
-    fechaRegistro: {
-      type: DataTypes.DATE,
+     fechaRegistro: {
+       type: DataTypes.DATE,
+       defaultValue: Sequelize.NOW,
+       allowNull: false
+     },
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
       allowNull: false
-    }
+    },
   }, {
     sequelize,
     tableName: 'mascotas',
