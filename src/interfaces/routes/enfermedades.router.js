@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { getAllController, createController, updateController, deleteController } = require('../controllers/enfermedades.controller');
+const { getAllController, getController, createController, updateController, deleteController } = require('../controllers/enfermedades.controller');
 
 router.get('/obtener', getAllController);
+router.get('/obtener/:id', getController);
 router.post('/crear', createController);
 router.put('/editar', updateController);
 router.delete('/eliminar/:id', deleteController);
