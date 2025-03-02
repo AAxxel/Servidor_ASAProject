@@ -6,6 +6,11 @@ const getAllCase = async () => {
     return list.map(object => new rolesDtos.dtoResponse(object));
 }
 
+const getCase = async (id) => { 
+    const getObject = await RolRepository.getById(id);
+    return new rolesDtos.dtoResponse(getObject);
+};
+
 const createCase = async (data) => {
     const object = new rolesDtos.dtoCreate(data);
     const createdObject = await RolRepository.create(object);
@@ -22,4 +27,4 @@ const destroyCase = async (id) => {
     return await RolRepository.destroy(id);
 }
 
-module.exports = { getAllCase, createCase, updateCase, destroyCase };
+module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase };
