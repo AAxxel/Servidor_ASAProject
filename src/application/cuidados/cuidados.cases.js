@@ -6,6 +6,11 @@ const getAllCase = async () => {
     return list.map(object => new cuidadosDtos.dtoResponse(object));
 };
 
+const getCase = async (id) => { 
+    const getObject = await CuidadoRepository.getById(id);
+    return new cuidadosDtos.dtoUpdate(getObject);
+};
+
 const createCase = async (data) => {
     const object = new cuidadosDtos.dtoCreate(data);
     const createdObject = await CuidadoRepository.create(object);
@@ -22,4 +27,4 @@ const destroyCase = async (id) => {
     return await CuidadoRepository.destroy(id);
 }
 
-module.exports = { getAllCase, createCase, updateCase, destroyCase };
+module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase };
