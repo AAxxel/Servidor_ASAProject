@@ -6,6 +6,10 @@ class CuidadoMascotasRepository {
         return cuidados_mascotas.findAll();
     }
 
+    async getAllPet(id){
+        return cuidados_mascotas.findAll({ where: { idMascota: id } });
+    }
+
     async getById(id){
         return cuidados_mascotas.findOne({ where: { idCuidadoMascota: id } });
     }
