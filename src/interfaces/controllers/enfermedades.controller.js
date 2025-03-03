@@ -4,6 +4,7 @@ const { SUCCESS, ERROR } = require('../../shared/utils/messages.http.js');
 const getAllController = async (req, res) => {
     try {
         const lista = await getAllCase();
+      //asi accedemos al id del usuario  console.log(req.idUsuario);
         res.status(201).json({ object: lista, message:  SUCCESS.FETCHED });
     } catch (error) {
         res.status(400).json({ error: error.message, message: ERROR.NOT_FOUND });
