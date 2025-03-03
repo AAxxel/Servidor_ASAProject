@@ -13,10 +13,8 @@ const medicamentosRouter = require('./medicamentos.router.js');
 const cuidadosMascotasRouter = require('./cuidados_mascotas.router.js');
 const enfermedadesMascotasRouter = require('./enfermedades_mascotas.router.js');
 const tratamientosRouter = require('./tratamientos.router.js');
-const authRouter = require('./auth.router.js');
 
 router.use('/amos', amosRouter);
-router.use('/auth', authRouter);
 router.use('/roles', rolesRouter);
 router.use('/usuarios', usuariosRouter);
 router.use('/especies', especiesRouter);

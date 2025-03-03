@@ -1,7 +1,8 @@
 const app = require('./src/config/app');
 const server = require('http').createServer(app);
 const {sequelize} = require('./src/config/database');
-const {router} = require('./src/interfaces/routes/router');
+const { router } = require('./src/interfaces/routes/router');
+const authRouter = require('./src/interfaces/routes/login.router.js');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -9,6 +10,7 @@ app.use(cors());
 
 const port = process.env.PORT;
 
+app.use('/', authRouter);
 app.use('/api', router);
 
   const startServer = async () => {

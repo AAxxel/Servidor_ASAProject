@@ -1,6 +1,8 @@
 const usuariosDtos = require('./usuarios.dtos');
 const { UsuarioRepository } = require('../../domain/repositories/repositories.js');
 const { getRolById } = require('../../domain/services/roles.services.js');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const loginCase = async (data) => {
     const object = new usuariosDtos.dtoAuth(data);
@@ -8,7 +10,12 @@ const loginCase = async (data) => {
     if(login === null){
         throw ('Credenciales incorrectas');
     }
-    return login;
+
+    const token = jwt.sign({ id: login.idUsuario}, process.env.SECRET_KEY, {
+        expiresIn: 86400
+    });
+
+    return token;
 }
 
 const getAllCase = async () => { 
