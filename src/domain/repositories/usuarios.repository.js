@@ -2,6 +2,17 @@ const { usuarios } = require('../../config/database.js').models;
 
 class UsuarioRepository {
     
+
+    async login(auth){
+        return usuarios.findOne(
+            {
+                where: { email: auth.auth,
+                        password: auth.password,
+                        estado: true },
+            }
+        );
+    }
+
     async getAll(){
         return usuarios.findAll(
             {

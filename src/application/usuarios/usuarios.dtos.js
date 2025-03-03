@@ -47,4 +47,11 @@ class dtoResponseIndividual {
     }
 }
 
-module.exports = { dtoCreate, dtoUpdate, dtoResponse, dtoResponseIndividual };
+class dtoAuth {
+    constructor(data){
+        this.auth = data.auth;
+        this.password = data.password;
+    }
+}
+
+module.exports = { dtoAuth, dtoCreate, dtoUpdate, dtoResponse, dtoResponseIndividual };

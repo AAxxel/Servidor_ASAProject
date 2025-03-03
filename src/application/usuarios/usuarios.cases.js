@@ -2,6 +2,15 @@ const usuariosDtos = require('./usuarios.dtos');
 const { UsuarioRepository } = require('../../domain/repositories/repositories.js');
 const { getRolById } = require('../../domain/services/roles.services.js');
 
+const loginCase = async (data) => {
+    const object = new usuariosDtos.dtoAuth(data);
+    const login = await UsuarioRepository.login(object);
+    if(login === null){
+        throw ('Credenciales incorrectas');
+    }
+    return login;
+}
+
 const getAllCase = async () => { 
     const list = await UsuarioRepository.getAll();
 
@@ -40,4 +49,4 @@ const destroyCase = async (id) => {
     return await UsuarioRepository.destroy(id);
 }
 
-module.exports = { getCase, getAllCase, createCase, updateCase, desactivarCase, destroyCase };
+module.exports = { loginCase, getCase, getAllCase, createCase, updateCase, desactivarCase, destroyCase };
