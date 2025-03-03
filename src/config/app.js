@@ -6,8 +6,14 @@ const authRouter = require('../interfaces/routes/login.router.js');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
+const corsOptions = {
+    origin: 'http://localhost:8000',
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 
 app.use('/', authRouter);
