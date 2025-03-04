@@ -6,9 +6,9 @@ const loginController = async (req, res) => {
         const log = await loginCase(req.body);
         res.cookie('loginToken', log, { 
             httpOnly: true,
-            sameSite: 'None',
-            secure: true,
+            sameSite: 'Lax',
             maxAge: 86400 * 1000,
+            path: '/', // Asegura que se use en toda la app
         });
         res.status(201).json({ object: log, message: SUCCESS.CREATED });
     } catch (error) {
