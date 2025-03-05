@@ -16,4 +16,13 @@ const loginController = async (req, res) => {
     }
 }
 
-module.exports = { loginController };
+const logoutController = async (req, res) => {
+    try {
+       res.clearCookie('loginToken')
+        res.status(201).json({ object: "Sesion cerrada.", message: SUCCESS.CREATED });
+    } catch (error) {
+        res.status(403).json({ error: error, message: ERROR.SERVER_ERROR });
+    }
+}
+
+module.exports = { loginController, logoutController };
