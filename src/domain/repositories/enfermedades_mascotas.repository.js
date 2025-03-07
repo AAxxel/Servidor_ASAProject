@@ -6,9 +6,14 @@ class EnfermedadMascotaRepository {
         return enfermedades_mascotas.findAll();
     }
 
+    async getAllPet(id){
+        return enfermedades_mascotas.findAll({ where: { idMascota: id } });
+    }
+
     async getById(id){
         return enfermedades_mascotas.findOne({ where: { idEnfermedadMascota: id } });
     }
+    
 
     async create(data){
         return enfermedades_mascotas.create(data);

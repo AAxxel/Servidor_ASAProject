@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken');
 const verificarToken = async (req, res, next) => {
     try {
         const token = req.cookies.loginToken;
-        console.log(req.cookies);
-        console.log(token);
         if (!token) {
             return res.status(403).json({ message: 'No token provided' });
         }
@@ -12,7 +10,6 @@ const verificarToken = async (req, res, next) => {
         req.idUsuario = data.id;
         next();
     } catch (error) {
-        console.log(error);
         return res.status(401).json({ message: 'Unauthorized' });
     }
 }

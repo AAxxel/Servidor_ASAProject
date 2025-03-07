@@ -28,4 +28,14 @@ class dtoResponse {
     }
 }
 
-module.exports = { dtoCreate, dtoUpdate, dtoResponse };
+class dtoResponseObjectPet {
+    constructor(data) {
+        this.idEnfermedadMascota = data.idEnfermedadMascota;
+        this.enfermedad = data.enfermedad;
+        this.idMascota = data.idMascota;
+        this.gravedad = data.gravedad;
+        this.fechaDiagnostico = data.fechaDiagnostico;
+    }
+}
+
+module.exports = { dtoCreate, dtoUpdate, dtoResponse, dtoResponseObjectPet };

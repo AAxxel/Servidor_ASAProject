@@ -18,6 +18,19 @@ const getAllCase = async () => {
     return mascotasSalida.map(object => new relacionDtos.dtoResponse(object.dataValues));
 };
 
+const getObjectPerPet = async (id) => {
+    const enfermedades = await EnfermedadMascotaRepository.getAllPet(id);
+    const listaEnfermedadesMascotas = enfermedades.map(object => new relacionDtos.dtoUpdate(object));
+
+    const objectLista = listaEnfermedadesMascotas;
+    for(element of objectLista){
+        element.enfermedad = await getEnfermedadById(element.idEnfermedad);
+    }
+
+    return objectLista.map(object => new relacionDtos.dtoResponseObjectPet(object));
+}
+
+
 const createCase = async (data) => {
     const object = new relacionDtos.dtoCreate(data);
     const createdObject = await EnfermedadMascotaRepository.create(object);
@@ -34,4 +47,4 @@ const destroyCase = async (id) => {
     return await EnfermedadMascotaRepository.destroy(id);
 }
 
-module.exports = { getAllCase, createCase, updateCase, destroyCase };
+module.exports = { getAllCase, getObjectPerPet, createCase, updateCase, destroyCase };

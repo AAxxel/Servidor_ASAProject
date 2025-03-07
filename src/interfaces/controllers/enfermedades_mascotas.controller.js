@@ -1,4 +1,4 @@
-const { getAllCase, createCase, updateCase, destroyCase } = require('../../application/enfermedades_mascotas/enfermedades_mascotas.cases.js');
+const { getAllCase, getObjectPerPet, createCase, updateCase, destroyCase } = require('../../application/enfermedades_mascotas/enfermedades_mascotas.cases.js');
 const { SUCCESS, ERROR } = require('../../shared/utils/messages.http.js');
 
 const getAllController = async (req, res) => {
@@ -7,6 +7,17 @@ const getAllController = async (req, res) => {
         res.status(201).json({ object: lista, message:  SUCCESS.FETCHED });
     } catch (error) {
         res.status(400).json({ error: error.message, message: ERROR.NOT_FOUND });
+    }
+}
+
+const getWeherePetController = async (req, res) => {
+    try {
+        const lista = await getObjectPerPet(req.params.id);
+        res.status(200).json({ object: lista, message:  SUCCESS.FETCHED });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: error, message: ERROR.NOT_FOUND });
+        
     }
 }
 
@@ -40,4 +51,4 @@ const deleteController = async (req, res) => {
     }
 }
 
-module.exports = { getAllController, createController, updateController, deleteController };
+module.exports = { getAllController, getWeherePetController ,createController, updateController, deleteController };
