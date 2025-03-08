@@ -3,17 +3,13 @@ class dtoCreate {
         this.idMascota = data.idMascota;
         this.idEnfermedad = data.idEnfermedad;
         this.idUsuario = data.idUsuario;
-        this.fechaDiagnostico = data.fechaDiagnostico;
         this.gravedad = data.gravedad;
     }
 }
 class dtoUpdate {
     constructor(data) {
         this.idEnfermedadMascota = data.idEnfermedadMascota;
-        this.idMascota = data.idMascota;
         this.idEnfermedad = data.idEnfermedad;
-        this.idUsuario = data.idUsuario;
-        this.fechaDiagnostico = data.fechaDiagnostico;
         this.gravedad = data.gravedad;
     }
 }

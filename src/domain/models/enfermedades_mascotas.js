@@ -33,6 +33,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     fechaDiagnostico: {
       type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
       allowNull: false
     },
     gravedad: {

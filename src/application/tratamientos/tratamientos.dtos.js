@@ -4,7 +4,6 @@ class dtoCreate {
         this.fechaInicio = data.fechaInicio;
         this.fechaFinal = data.fechaFinal;
         this.tipoTratamiento = data.tipoTratamiento;
-        this.estado = data.estado;
         this.notas = data.notas;
     }
 }
@@ -15,7 +14,6 @@ class dtoUpdate {
         this.fechaInicio = data.fechaInicio;
         this.fechaFinal = data.fechaFinal;
         this.tipoTratamiento = data.tipoTratamiento;
-        this.estado = data.estado;
         this.notas = data.notas;
     }
 }
@@ -28,8 +26,20 @@ class dtoResponse {
         this.fechaFinal = data.fechaFinal;
         this.tipoTratamiento = data.tipoTratamiento;
         this.estado = data.estado;
-        
+        this.notas = data.notas; 
     }
 }
 
-module.exports = { dtoCreate, dtoUpdate, dtoResponse };
+class dtoTable {
+    constructor(data) {
+        this.idTratamiento = data.idTratamiento;
+        this.nombreMascota = data.nombreMascota;
+        this.nombreEnfermedad = data.nombreEnfermedad;
+        this.fechaInicio = data.fechaInicio;
+        this.fechaFinal = data.fechaFinal;
+        this.tipoTratamiento = data.tipoTratamiento;
+        this.estado = data.estado;
+    }
+}
+
+module.exports = { dtoCreate, dtoUpdate, dtoResponse, dtoTable };

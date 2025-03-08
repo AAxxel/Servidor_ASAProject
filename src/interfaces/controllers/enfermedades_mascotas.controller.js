@@ -23,6 +23,7 @@ const getWeherePetController = async (req, res) => {
 
 const createController = async (req, res) => {
     try {
+        req.body.idUsuario = req.idUsuario;
         const object = await createCase(req.body);
         res.status(201).json({ object: object, message: SUCCESS.CREATED });
     } catch (error) {
@@ -32,10 +33,12 @@ const createController = async (req, res) => {
 
 const updateController = async (req, res) => {
     try {
+        console.log('entro aqui')
         const object = await updateCase(req.body);
         res.status(201).json({object: object, message: SUCCESS.UPDATED});
     } catch (error) {
-        res.status(400).json({ error: error.message, message: ERROR.SERVER_ERROR });
+        console.log(error)
+        res.status(400).json({ error: error, message: ERROR.SERVER_ERROR });
     }
 }
 

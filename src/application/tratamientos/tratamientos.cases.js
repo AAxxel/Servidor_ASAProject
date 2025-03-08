@@ -6,6 +6,19 @@ const getAllCase = async () => {
     const list = await TratamientoRepository.getAll();
 
     const listWithRelations = await Promise.all(list.map(async object => {
+        const info = await getEnfermadAndMascota(object.dataValues.idMascEnfermedad);
+        object.dataValues.nombreMascota = info.mascota.nombre;
+        object.dataValues.nombreEnfermedad = info.enfermedad.nombreEnfermedad;
+        return object;
+    }));
+
+    return listWithRelations.map(object => new tratamientosDtos.dtoTable(object.dataValues));
+}
+
+const getCaseById = async () => { 
+    const list = await TratamientoRepository.getAll();
+
+    const listWithRelations = await Promise.all(list.map(async object => {
         object.dataValues.info = await getEnfermadAndMascota(object.dataValues.idMascEnfermedad);
         return object;
     }));
