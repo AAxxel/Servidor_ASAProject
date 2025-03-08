@@ -28,6 +28,7 @@ class dtoUpdateEstado {
 class dtoResponse {
     constructor(data) {
         this.idTratamiento = data.idTratamiento;
+        this.idMascEnfermedad = data.idMascEnfermedad;
         this.info = data.info;
         this.fechaInicio = data.fechaInicio;
         this.fechaFinal = data.fechaFinal;
