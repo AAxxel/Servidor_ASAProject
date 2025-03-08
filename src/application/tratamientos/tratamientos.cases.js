@@ -15,15 +15,10 @@ const getAllCase = async () => {
     return listWithRelations.map(object => new tratamientosDtos.dtoTable(object.dataValues));
 }
 
-const getCaseById = async () => { 
-    const list = await TratamientoRepository.getAll();
-
-    const listWithRelations = await Promise.all(list.map(async object => {
-        object.dataValues.info = await getEnfermadAndMascota(object.dataValues.idMascEnfermedad);
-        return object;
-    }));
-
-    return listWithRelations.map(object => new tratamientosDtos.dtoResponse(object.dataValues));
+const getCaseById = async (id) => { 
+    const tratamiento = await TratamientoRepository.getById(id);
+        tratamiento.info = await getEnfermadAndMascota(tratamiento.dataValues.idMascEnfermedad);
+    return new tratamientosDtos.dtoResponse(tratamiento);
 }
 
 const createCase = async (data) => {
@@ -42,4 +37,4 @@ const destroyCase = async (id) => {
     return await TratamientoRepository.destroy(id);
 }
 
-module.exports = { getAllCase, createCase, updateCase, destroyCase };
+module.exports = { getAllCase, getCaseById, createCase, updateCase, destroyCase };
