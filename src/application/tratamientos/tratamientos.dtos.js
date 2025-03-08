@@ -18,6 +18,13 @@ class dtoUpdate {
     }
 }
 
+class dtoUpdateEstado {
+    constructor(data) {
+        this.idTratamiento = data.idTratamiento;
+        this.estado = data.estado;
+            }
+}
+
 class dtoResponse {
     constructor(data) {
         this.idTratamiento = data.idTratamiento;
@@ -42,4 +49,4 @@ class dtoTable {
     }
 }
 
-module.exports = { dtoCreate, dtoUpdate, dtoResponse, dtoTable };
+module.exports = { dtoCreate, dtoUpdate, dtoUpdateEstado, dtoResponse, dtoTable };

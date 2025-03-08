@@ -1,4 +1,4 @@
-const { getAllCase, getCaseById ,createCase, updateCase, destroyCase } = require('../../application/tratamientos/tratamientos.cases.js');
+const { getAllCase, getCaseById ,createCase, updateCase, updateEstado, destroyCase } = require('../../application/tratamientos/tratamientos.cases.js');
 const { SUCCESS, ERROR } = require('../../shared/utils/messages.http.js');
 
 const getAllController = async (req, res) => {
@@ -38,6 +38,15 @@ const updateController = async (req, res) => {
     }
 }
 
+const updateEstadoController = async (req, res) => {
+    try {
+        const object = await updateEstado(req.body);
+        res.status(200).json({object: object, message: SUCCESS.UPDATED});
+    } catch (error) {
+        res.status(400).json({ error: error, message: ERROR.SERVER_ERROR });
+    }
+}
+
 const deleteController = async (req, res) => {
     try {
         const object = await destroyCase(req.params.id);
@@ -50,4 +59,4 @@ const deleteController = async (req, res) => {
     }
 }
 
-module.exports = { getAllController, getOneController, createController, updateController, deleteController };
+module.exports = { getAllController, getOneController, createController, updateController, updateEstadoController, deleteController };

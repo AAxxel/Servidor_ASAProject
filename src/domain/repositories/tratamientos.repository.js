@@ -10,6 +10,13 @@ class TratamientoRepository {
         return tratamientos.findOne({ where: { idTratamiento: id } });
     }
 
+    async getStatusById(id){
+        return tratamientos.findOne({
+            attributes: ['estado'],
+            where: { idTratamiento: id }
+        });
+    }
+
     async create(data){
         return tratamientos.create(data);
     }
