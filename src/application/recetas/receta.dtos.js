@@ -1,4 +1,4 @@
-class dtoCreate {
+class RecetaCreate {
     constructor(data) {
         this.idTratamiento = data.idTratamiento;
         this.idMedicamento = data.idMedicamento;
@@ -8,7 +8,7 @@ class dtoCreate {
     }
 }
 
-class dtoUpdate {
+class RecetaUpdate {
     constructor(data) {
         this.idReceta = data.idReceta;
         this.idMedicamento = data.idMedicamento;
@@ -18,7 +18,7 @@ class dtoUpdate {
     }
 }
 
-class dtoResponse {
+class RecetaResponse {
     constructor(data) {
         this.idReceta = data.idReceta;
         this.mascota = data.dataValues.idTratamiento_tratamiento.idMascEnfermedad_enfermedades_mascota.idMascota_mascota.nombre;
@@ -28,7 +28,7 @@ class dtoResponse {
     }
 }
 
-class dtoResponseList {
+class RecetaResponseList {
     constructor(data) {
         this.idReceta = data.idReceta;
         this.idMedicamento = data.idMedicamento;
@@ -38,7 +38,7 @@ class dtoResponseList {
     }
 }
 
-class dtoResponseOnly {
+class RecetaResponseOnly {
     constructor(data) {
         this.idReceta = data.idReceta;
         this.mascota = data.mascota;
@@ -49,4 +49,4 @@ class dtoResponseOnly {
     }
 }
 
-module.exports = { dtoCreate, dtoUpdate, dtoResponse, dtoResponseOnly, dtoResponseList };
+module.exports = { RecetaCreate, RecetaUpdate, RecetaResponse, RecetaResponseOnly, RecetaResponseList };

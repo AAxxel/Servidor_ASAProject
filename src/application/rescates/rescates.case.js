@@ -1,11 +1,24 @@
 const rescatesDto = require('./rescates.dtos');
 const { RescateRepository } = require('../../domain/repositories/repositories.js');
 const { isStatusRescateValid } = require('../../shared/utils/validarEstado.js');
+const { getMascotaById } = require('../../domain/services/mascotas.services.js');
 
 const getAllCase = async () => { 
     const list = await RescateRepository.getAll();
+    const nombresMascotas =  await Promise.all(list.map( async (object) => {
+        
+        if(!object.dataValues.idMascota || object.dataValues.idMascota === null){
+            object.dataValues.mascota = "Pendiente";
+        }
+        else {
+            var datos = await getMascotaById(object.dataValues.idMascota);
+            object.dataValues.mascota = datos.nombre;
+        }
+        
+        return object;
+    })) ;
 
-    return list.map(object => new rescatesDto.dtoResponse(object.dataValues));
+    return nombresMascotas.map(object => new rescatesDto.dtoResponse(object.dataValues));
 }
 
 const getCase = async (id) => { 

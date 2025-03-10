@@ -30,7 +30,7 @@ class dtoUpdateEstado {
 class dtoResponse {
     constructor(data) {
         this.idRescate = data.idRescate;
-        this.idMascota = data.idMascota;
+        this.mascota = data.mascota;
         this.fechaRescate = data.fechaRescate;
         this.ubicacion = data.ubicacion;
         this.estadoAnimal = data.estadoAnimal;
