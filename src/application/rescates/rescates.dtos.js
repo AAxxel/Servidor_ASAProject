@@ -6,7 +6,6 @@ class dtoCreate {
         this.ubicacion = data.ubicacion;
         this.notasRescate = data.notasRescate;
         this.estadoAnimal = data.estadoAnimal;
-        this.estadoRescate = data.estadoRescate;
     }
 }
 

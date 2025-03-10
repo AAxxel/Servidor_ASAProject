@@ -39,6 +39,7 @@ const updateCase = async (data) => {
 }
 
 const updateEstado = async (data) => {
+
     const object = new rescatesDto.dtoUpdateEstado(data);
     
      const oldStatus = await RescateRepository.getStatusById(object.idRescate);
