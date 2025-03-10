@@ -8,7 +8,6 @@ const getAllCase = async () => {
     const razasConEspecies = await Promise.all(list.map(async element => {
         var idEspecie = element.dataValues.idEspecie;
         var datos = await getEspecieById(idEspecie);
-        console.log(datos);
         element.dataValues.nombreEspecie = datos.nombreEspecie;
         return element;
     }));

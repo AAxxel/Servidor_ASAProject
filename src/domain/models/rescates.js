@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     idMascota: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'mascotas',
         key: 'idmascota'
@@ -38,7 +38,18 @@ module.exports = function(sequelize, DataTypes) {
     estadoAnimal: {
       type: DataTypes.ENUM('Bueno','Regular','Malo','Crítico'),
       allowNull: false
-    }
+    },
+    estadoRescate: {
+      type: DataTypes.ENUM('Reportado', 'En curso', 'Completado', 'Cancelado', 'No exitoso'),
+      allowNull: false,
+       defaultValue: 'Reportado'
+    },
+    fechaRegistro: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.NOW
+    },
+    
   }, {
     sequelize,
     tableName: 'rescates',

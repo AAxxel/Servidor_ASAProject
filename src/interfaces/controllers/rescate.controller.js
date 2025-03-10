@@ -1,4 +1,4 @@
-const { getAllCase, getCase, getAllCaseTratamiento, createCase, updateCase, destroyCase } = require('../../application/recetas/receta.cases.js');
+const { getAllCase, getCase, createCase, updateCase, destroyCase } = require('../../application/rescates/rescates.case.js');
 const { SUCCESS, ERROR } = require('../../shared/utils/messages.http.js');
 
 const getAllController = async (req, res) => {
@@ -32,6 +32,7 @@ const getController = async (req, res) => {
 
 const createController = async (req, res) => {
     try {
+        req.body.idUsuario = req.idUsuario;
         const object = await createCase(req.body);
         res.status(201).json({ object: object, message: SUCCESS.CREATED });
     } catch (error) {

@@ -11,6 +11,7 @@ const CuidadoMascotasRepository = require('./cuidados_mascotas.repository');
 const EnfermedadMascotaRepository = require('./enfermedades_mascotas.repository');
 const TratamientoRepository = require('./tratamientos.repository');
 const RecetaRepository = require('./receta.repository');
+const RescateRepository = require('./rescate.repository');
 
 module.exports = {  
     AmoRepository: AmoRepository,
@@ -25,5 +26,6 @@ module.exports = {
     CuidadoMascotasRepository: CuidadoMascotasRepository,
     EnfermedadMascotaRepository: EnfermedadMascotaRepository,
     TratamientoRepository: TratamientoRepository,
-    RecetaRepository: RecetaRepository
+    RecetaRepository: RecetaRepository,
+    RescateRepository: RescateRepository
  };

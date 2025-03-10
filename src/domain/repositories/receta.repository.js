@@ -40,8 +40,10 @@ class RecetaRepository {
     
         return object;
     }
-    
-    
+
+    async getPerTratamiento(id){
+        return receta.findAll({ where : { idTratamiento: id } });
+    }
 
     async getById(id){
         return receta.findOne({ where: { idReceta: id } });
