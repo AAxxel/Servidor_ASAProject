@@ -10,6 +10,13 @@ class RescateRepository {
         return rescates.findOne({ where: { idRescate: id } });
     }
 
+    async getStatusById(id){
+        return rescates.findOne({
+            attributes: ['estadoRescate'],
+            where: { idRescate: id }
+        });
+    }
+
     async create(data){
         return rescates.create(data);
     }
