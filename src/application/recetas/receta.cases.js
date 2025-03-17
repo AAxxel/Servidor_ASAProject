@@ -3,7 +3,7 @@ const { RecetaRepository } = require('../../domain/repositories/repositories.js'
 
 const getAllCase = async () => { 
     const list = await RecetaRepository.obtenerRecetaConTratamiento();
-    const response = list.map((item) => new recetaDtos.dtoResponse(item));
+    const response = list.map((item) => new recetaDtos.RecetaResponse(item));
     return response;
 }
 
@@ -15,7 +15,7 @@ const getAllCaseTratamiento = async (id) => {
 
 const getCase = async (id) => { 
     const getObject = await RecetaRepository.getById(id);
-    return new recetaDtos.dtoResponseOnly(getObject);
+    return new recetaDtos.RecetaResponseOnly(getObject);
 };
 
 const createCase = async (data) => {
