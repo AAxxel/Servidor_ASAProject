@@ -28,10 +28,20 @@ class dtoResponse {
     }
 }
 
+class dtoResponseList {
+    constructor(data) {
+        this.idReceta = data.idReceta;
+        this.idMedicamento = data.idMedicamento;
+        this.frecuenciaHoras = data.frecuenciaHoras;
+        this.cantidadDiaria = data.cantidadDiaria;
+        this.instruAdicionales = data.instruAdicionales;
+    }
+}
+
 class dtoResponseOnly {
     constructor(data) {
         this.idReceta = data.idReceta;
-        this.tratamiento = data.tratamiento;
+        this.mascota = data.mascota;
         this.medicamento = data.medicamento;
         this.frecuenciaHoras = data.frecuenciaHoras;
         this.cantidadDiaria = data.cantidadDiaria;
@@ -39,4 +49,4 @@ class dtoResponseOnly {
     }
 }
 
-module.exports = { dtoCreate, dtoUpdate, dtoResponse, dtoResponseOnly };
+module.exports = { dtoCreate, dtoUpdate, dtoResponse, dtoResponseOnly, dtoResponseList };

@@ -3,13 +3,13 @@ const { RecetaRepository } = require('../../domain/repositories/repositories.js'
 
 const getAllCase = async () => { 
     const list = await RecetaRepository.obtenerRecetaConTratamiento();
-    const response = list.map((item) => new recetaDtos.RecetaResponse(item));
+    const response = list.map((item) => new recetaDtos.dtoResponse(item));
     return response;
 }
 
 const getAllCaseTratamiento = async (id) => { 
     const list = await RecetaRepository.getPerTratamiento(id);
-    const response = list.map((item) => new recetaDtos.dtoResponse(item));
+    const response = list.map((item) => new recetaDtos.dtoResponseList(item));
     return response;
 }
 
