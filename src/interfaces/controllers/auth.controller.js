@@ -3,6 +3,7 @@ const { SUCCESS, ERROR } = require('../../shared/utils/messages.http.js');
 
 const loginController = async (req, res) => {
     try {
+        console.log(req.body);
         const log = await loginCase(req.body);
         res.cookie('loginToken', log, { 
             httpOnly: true,
@@ -12,6 +13,7 @@ const loginController = async (req, res) => {
         });
         res.status(201).json({ object: log, message: SUCCESS.CREATED });
     } catch (error) {
+        console.log(error);
         res.status(403).json({ error: error, message: ERROR.SERVER_ERROR });
     }
 }
