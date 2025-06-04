@@ -4,7 +4,7 @@ const { SUCCESS, ERROR } = require('../../shared/utils/messages.http.js');
 const getAllController = async (req, res) => {
     try {
         const lista = await getAllCase();
-        res.status(201).json({ object: lista, message:  SUCCESS.FETCHED });
+        res.status(200).json({ object: lista, message:  SUCCESS.FETCHED });
     } catch (error) {
         res.status(400).json({ error: error.message, message: ERROR.NOT_FOUND });
     }
@@ -14,7 +14,7 @@ const getController = async (req, res) => {
     try {
         const object = await getCase(req.params.id);
        // throw new Error('Error en el controlador');
-        res.status(201).json({ object: object, message:  SUCCESS.FETCHED });
+        res.status(200).json({ object: object, message:  SUCCESS.FETCHED });
     } catch (error) {
         
         res.status(400).json({ error: error, message: ERROR.NOT_FOUND });
