@@ -8,6 +8,7 @@ var _enfermedades_mascotas = require("./enfermedades_mascotas");
 var _especie = require("./especie");
 var _mascotas = require("./mascotas");
 var _medicamento = require("./medicamento");
+var _petimages = require("./petimages");
 var _raza = require("./raza");
 var _receta = require("./receta");
 var _rescates = require("./rescates");
@@ -26,6 +27,7 @@ function initModels(sequelize) {
   var especie = _especie(sequelize, DataTypes);
   var mascotas = _mascotas(sequelize, DataTypes);
   var medicamento = _medicamento(sequelize, DataTypes);
+  var petimages = _petimages(sequelize, DataTypes);
   var raza = _raza(sequelize, DataTypes);
   var receta = _receta(sequelize, DataTypes);
   var rescates = _rescates(sequelize, DataTypes);
@@ -52,6 +54,8 @@ function initModels(sequelize) {
   mascotas.hasMany(cuidados_mascotas, { as: "cuidados_mascota", foreignKey: "idMascota"});
   enfermedades_mascotas.belongsTo(mascotas, { as: "idMascota_mascota", foreignKey: "idMascota"});
   mascotas.hasMany(enfermedades_mascotas, { as: "enfermedades_mascota", foreignKey: "idMascota"});
+  petimages.belongsTo(mascotas, { as: "idPetImage_mascota", foreignKey: "idPetImage"});
+  mascotas.hasOne(petimages, { as: "petimage", foreignKey: "idPetImage"});
   rescates.belongsTo(mascotas, { as: "idMascota_mascota", foreignKey: "idMascota"});
   mascotas.hasMany(rescates, { as: "rescates", foreignKey: "idMascota"});
   receta.belongsTo(medicamento, { as: "idMedicamento_medicamento", foreignKey: "idMedicamento"});
@@ -79,6 +83,7 @@ function initModels(sequelize) {
     especie,
     mascotas,
     medicamento,
+    petimages,
     raza,
     receta,
     rescates,

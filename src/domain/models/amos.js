@@ -49,14 +49,13 @@ module.exports = function(sequelize, DataTypes) {
     },
     fechaRegistro: {
       type: DataTypes.DATE,
-      defaultValue: Sequelize.NOW,
       allowNull: false
     },
     estado: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-      allowNull: false
-    },
+      type: DataTypes.TINYINT,
+      allowNull: false,
+      defaultValue: 1
+    }
   }, {
     sequelize,
     tableName: 'amos',

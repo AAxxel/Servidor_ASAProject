@@ -40,16 +40,13 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     estadoRescate: {
-      type: DataTypes.ENUM('Reportado', 'En curso', 'Completado', 'Cancelado', 'No exitoso'),
-      allowNull: false,
-       defaultValue: 'Reportado'
+      type: DataTypes.ENUM('Reportado','En curso','Completado','Cancelado','No exitoso'),
+      allowNull: false
     },
     fechaRegistro: {
       type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: Sequelize.NOW
-    },
-    
+      allowNull: false
+    }
   }, {
     sequelize,
     tableName: 'rescates',

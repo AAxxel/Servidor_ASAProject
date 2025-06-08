@@ -29,7 +29,6 @@ module.exports = function(sequelize, DataTypes) {
     },
     estado: {
       type: DataTypes.ENUM('En curso','Completado','Pendiente','Suspendido'),
-      defaultValue: 'Pendiente',
       allowNull: false
     },
     notas: {
