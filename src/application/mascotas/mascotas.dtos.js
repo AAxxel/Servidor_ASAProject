@@ -28,7 +28,7 @@ class dtoResponse {
 
 class dtoGetImgPet {
     constructor(data) {
-        this.idmascota = data.idmascota;
+        this.idPet = data.idPet;
         this.url = data.url;
         this.isCover = data.isCover;
         this.description = data.description;
@@ -37,10 +37,11 @@ class dtoGetImgPet {
 
 class dtoSaveImgPet {
     constructor(data) {
-        this.idmascota = data.idmascota;
+        this.idPet = data.body.idMascota;
         this.file = data.file;
-        this.isCover = data.isCover;
-        this.description = data.description;
+        this.isCover = data.body.isCover;
+        this.description = data.body.description;
+        this.url = ""
     }
 }
 

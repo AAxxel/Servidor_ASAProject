@@ -5,11 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
-      references: {
-        model: 'mascotas',
-        key: 'idmascota'
-      }
+      primaryKey: true
     },
     url: {
       type: DataTypes.STRING(500),
@@ -17,7 +13,20 @@ module.exports = function(sequelize, DataTypes) {
     },
     idPet: {
       type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'mascotas',
+        key: 'idmascota'
+      }
+    },
+    description: {
+      type: DataTypes.STRING(100),
       allowNull: true
+    },
+    isCover: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: 0
     }
   }, {
     sequelize,
@@ -30,6 +39,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "idPetImage" },
+        ]
+      },
+      {
+        name: "keypetImage_idx",
+        using: "BTREE",
+        fields: [
+          { name: "idPet" },
         ]
       },
     ]

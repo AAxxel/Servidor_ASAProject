@@ -54,8 +54,8 @@ function initModels(sequelize) {
   mascotas.hasMany(cuidados_mascotas, { as: "cuidados_mascota", foreignKey: "idMascota"});
   enfermedades_mascotas.belongsTo(mascotas, { as: "idMascota_mascota", foreignKey: "idMascota"});
   mascotas.hasMany(enfermedades_mascotas, { as: "enfermedades_mascota", foreignKey: "idMascota"});
-  petimages.belongsTo(mascotas, { as: "idPetImage_mascota", foreignKey: "idPetImage"});
-  mascotas.hasOne(petimages, { as: "petimage", foreignKey: "idPetImage"});
+  petimages.belongsTo(mascotas, { as: "idPet_mascota", foreignKey: "idPet"});
+  mascotas.hasMany(petimages, { as: "petimages", foreignKey: "idPet"});
   rescates.belongsTo(mascotas, { as: "idMascota_mascota", foreignKey: "idMascota"});
   mascotas.hasMany(rescates, { as: "rescates", foreignKey: "idMascota"});
   receta.belongsTo(medicamento, { as: "idMedicamento_medicamento", foreignKey: "idMedicamento"});

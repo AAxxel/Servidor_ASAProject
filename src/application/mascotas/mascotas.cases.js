@@ -2,6 +2,7 @@ const mascotasDtos = require('./mascotas.dtos.js');
 const { MascotaRepository } = require('../../domain/repositories/repositories.js');
 const { getRazaById } = require('../../domain/services/raza.services.js');
 const { getEspecieById } = require('../../domain/services/especies.services.js');
+const { uploadImage } = require('../../domain/services/AWS/S3/savePetImage.js');
 
 const getAllCase = async () => { 
     const list = await MascotaRepository.getAll();
@@ -33,7 +34,9 @@ const createCase = async (data) => {
 
 const saveImgCase = async (data) => {
     const object = new mascotasDtos.dtoSaveImgPet(data);
-    const createdObject = await MascotaRepository.create(object);
+    const finalUrl = await uploadImage(object.file);
+    object.url = finalUrl
+    const createdObject = await MascotaRepository.saveImage(object);
     return new mascotasDtos.dtoGetImgPet(createdObject);
 }
 

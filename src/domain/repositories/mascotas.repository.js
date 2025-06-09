@@ -1,4 +1,5 @@
 const { mascotas } = require('../../config/database.js').models;
+const { petimages } = require('../../config/database.js').models;
 
 class MascotaRepository {
     
@@ -14,6 +15,10 @@ class MascotaRepository {
 
     async create(data){
         return mascotas.create(data);
+    }
+
+    async saveImage(data){
+        return petimages.create(data);
     }
 
     async update(data){

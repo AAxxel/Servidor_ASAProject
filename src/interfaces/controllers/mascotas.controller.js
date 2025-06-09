@@ -32,7 +32,7 @@ const createController = async (req, res) => {
 
 const saveImgController = async (req, res) => {
     try {
-        const object = await saveImgCase(req.body);
+        const object = await saveImgCase(req);
         res.status(201).json({ object: object, message: SUCCESS.CREATED });
     } catch (error) {
         res.status(400).json({ error: error.message, message: ERROR.SERVER_ERROR });
