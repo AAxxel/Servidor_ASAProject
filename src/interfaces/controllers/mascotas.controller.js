@@ -1,4 +1,4 @@
-const { getAllCase, createCase, updateCase, destroyCase, getCase, desactivarCase } = require('../../application/mascotas/mascotas.cases.js');
+const { getAllCase, createCase, updateCase, destroyCase, getCase, desactivarCase, saveImgCase } = require('../../application/mascotas/mascotas.cases.js');
 const { SUCCESS, ERROR } = require('../../shared/utils/messages.http.js');
 
 const getAllController = async (req, res) => {
@@ -29,6 +29,16 @@ const createController = async (req, res) => {
         res.status(400).json({ error: error.message, message: ERROR.SERVER_ERROR });
     }
 }
+
+const saveImgController = async (req, res) => {
+    try {
+        const object = await saveImgCase(req.body);
+        res.status(201).json({ object: object, message: SUCCESS.CREATED });
+    } catch (error) {
+        res.status(400).json({ error: error.message, message: ERROR.SERVER_ERROR });
+    }
+}
+
 
 const updateController = async (req, res) => {
     try {
@@ -61,4 +71,4 @@ const desactivarController = async (req, res) => {
         res.status(400).json({ error: error, message: ERROR.SERVER_ERROR });
     }
 }
-module.exports = { getAllController, getController, createController, updateController, deleteController, desactivarController };
+module.exports = { getAllController, getController, createController, updateController, deleteController, desactivarController, saveImgController };

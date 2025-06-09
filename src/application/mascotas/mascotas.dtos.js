@@ -26,4 +26,22 @@ class dtoResponse {
     }
 }
 
-module.exports = { dtoCreate, dtoUpdate, dtoResponse };
+class dtoGetImgPet {
+    constructor(data) {
+        this.idmascota = data.idmascota;
+        this.url = data.url;
+        this.isCover = data.isCover;
+        this.description = data.description;
+    }
+}
+
+class dtoSaveImgPet {
+    constructor(data) {
+        this.idmascota = data.idmascota;
+        this.file = data.file;
+        this.isCover = data.isCover;
+        this.description = data.description;
+    }
+}
+
+module.exports = { dtoCreate, dtoUpdate, dtoResponse, dtoGetImgPet, dtoSaveImgPet };
