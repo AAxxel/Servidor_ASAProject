@@ -21,6 +21,10 @@ class MascotaRepository {
         return petimages.create(data);
     }
 
+        async getByIdPetImages(id){
+        return petimages.findAll({ where: { idPet: id } });
+    }
+
     async update(data){
         await mascotas.update(data, {where: {idmascota: data.idmascota}});
         return mascotas.findOne({ where: { idmascota: data.idmascota } });

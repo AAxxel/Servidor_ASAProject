@@ -34,11 +34,15 @@ const createCase = async (data) => {
 
 const saveImgCase = async (data) => {
     const object = new mascotasDtos.dtoSaveImgPet(data);
-    const finalUrl = await uploadImage(object.file);
-    object.url = finalUrl
+    object.url = await uploadImage(object.file);
     const createdObject = await MascotaRepository.saveImage(object);
     return new mascotasDtos.dtoGetImgPet(createdObject);
 }
+
+const getImagesPetById = async (id) => {
+    const list = await MascotaRepository.getByIdPetImages(id);
+    return list.map(i => new mascotasDtos.dtoGetImgPet(i));
+};
 
 const updateCase = async (data) => {
     const object = new mascotasDtos.dtoUpdate(data);
@@ -54,4 +58,4 @@ const destroyCase = async (id) => {
     return await MascotaRepository.destroy(id);
 }
 
-module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase, desactivarCase, saveImgCase };
+module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase, desactivarCase, saveImgCase, getImagesPetById };
