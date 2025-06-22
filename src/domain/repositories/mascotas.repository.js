@@ -9,7 +9,10 @@ class MascotaRepository {
             include: {
                 model: petimages,
                 as: 'petimages',
-                required: false
+                required: false,
+                where: {
+                    isCover: 1
+                }
             }
         });
     }
@@ -49,6 +52,10 @@ class MascotaRepository {
 
     async destroy(id){
         return await mascotas.destroy({ where: { idmascota: id}});
+    }
+
+        async destroyImg(id){
+        return await petimages.destroy({ where: { idPetImage: id}});
     }
 }
 

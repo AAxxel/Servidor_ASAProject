@@ -63,4 +63,8 @@ const destroyCase = async (id) => {
     return await MascotaRepository.destroy(id);
 }
 
-module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase, desactivarCase, saveImgCase, getImagesPetById, getCoverImagesPet };
+const destroyImgCase = async (id) => {
+    return await MascotaRepository.destroyImg(id);
+}
+
+module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase, desactivarCase, saveImgCase, getImagesPetById, getCoverImagesPet, destroyImgCase };

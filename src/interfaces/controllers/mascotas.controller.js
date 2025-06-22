@@ -1,4 +1,4 @@
-const { getAllCase, createCase, updateCase, destroyCase, getCase, desactivarCase, saveImgCase, getImagesPetById, getCoverImagesPet } = require('../../application/mascotas/mascotas.cases.js');
+const { getAllCase, createCase, updateCase, destroyCase, getCase, desactivarCase, saveImgCase, getImagesPetById, getCoverImagesPet, destroyImgCase } = require('../../application/mascotas/mascotas.cases.js');
 const { SUCCESS, ERROR } = require('../../shared/utils/messages.http.js');
 
 const getAllController = async (req, res) => {
@@ -60,6 +60,16 @@ const deleteController = async (req, res) => {
         res.status(400).json({ error: error.message, message: ERROR.SERVER_ERROR });
     }
 }
+
+const deleteImgController = async (req, res) => {
+    try {
+        const object = await destroyImgCase(req.params.id);
+        res.status(201).json({ object: object, message: SUCCESS.DELETED });
+    } catch (error) {
+        res.status(400).json({ error: error.message, message: ERROR.SERVER_ERROR });
+    }
+}
+
 const desactivarController = async (req, res) => {
     try {
         const object = await desactivarCase(req.params.id);
@@ -90,4 +100,4 @@ const getCoverImagesController = async (req, res) => {
     }
 }
 
-module.exports = { getAllController, getController, createController, updateController, deleteController, desactivarController, saveImgController, getImagesByIdController, getCoverImagesController };
+module.exports = { getAllController, getController, createController, updateController, deleteController, desactivarController, saveImgController, getImagesByIdController, getCoverImagesController, deleteImgController };
