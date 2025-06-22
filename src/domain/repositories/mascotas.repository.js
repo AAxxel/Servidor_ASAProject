@@ -5,7 +5,12 @@ class MascotaRepository {
     
     async getAll(){
         return mascotas.findAll({
-            where: { estado: true }
+            where: { estado: true },
+            include: {
+                model: petimages,
+                as: 'petimages',
+                required: false
+            }
         });
     }
 
@@ -21,8 +26,16 @@ class MascotaRepository {
         return petimages.create(data);
     }
 
-        async getByIdPetImages(id){
-        return petimages.findAll({ where: { idPet: id } });
+    async getByIdPetImages(id){
+    return petimages.findAll({ where: { idPet: id } });
+    }
+
+    async getCoverImgPets(){
+        return petimages.findAll({
+            where: {
+                isCover: 1
+            }
+        });
     }
 
     async update(data){

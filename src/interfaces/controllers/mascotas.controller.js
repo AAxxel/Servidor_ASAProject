@@ -1,4 +1,4 @@
-const { getAllCase, createCase, updateCase, destroyCase, getCase, desactivarCase, saveImgCase, getImagesPetById } = require('../../application/mascotas/mascotas.cases.js');
+const { getAllCase, createCase, updateCase, destroyCase, getCase, desactivarCase, saveImgCase, getImagesPetById, getCoverImagesPet } = require('../../application/mascotas/mascotas.cases.js');
 const { SUCCESS, ERROR } = require('../../shared/utils/messages.http.js');
 
 const getAllController = async (req, res) => {
@@ -81,4 +81,13 @@ const getImagesByIdController = async (req, res) => {
     }
 }
 
-module.exports = { getAllController, getController, createController, updateController, deleteController, desactivarController, saveImgController, getImagesByIdController };
+const getCoverImagesController = async (req, res) => {
+    try {
+        const lista = await getCoverImagesPet();
+        res.status(200).json({ object: lista, message:  SUCCESS.FETCHED });
+    } catch (error) {
+        res.status(400).json({ error: error.message, message: ERROR.NOT_FOUND });
+    }
+}
+
+module.exports = { getAllController, getController, createController, updateController, deleteController, desactivarController, saveImgController, getImagesByIdController, getCoverImagesController };

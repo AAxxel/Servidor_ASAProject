@@ -44,6 +44,11 @@ const getImagesPetById = async (id) => {
     return list.map(i => new mascotasDtos.dtoGetImgPet(i));
 };
 
+const getCoverImagesPet = async () => {
+    const list = await MascotaRepository.getCoverImgPets()
+    return list.map(object => new mascotasDtos.dtoGetCoverImgPet(object));
+};
+
 const updateCase = async (data) => {
     const object = new mascotasDtos.dtoUpdate(data);
     const updatedObject = await MascotaRepository.update(object);
@@ -58,4 +63,4 @@ const destroyCase = async (id) => {
     return await MascotaRepository.destroy(id);
 }
 
-module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase, desactivarCase, saveImgCase, getImagesPetById };
+module.exports = { getAllCase, getCase, createCase, updateCase, destroyCase, desactivarCase, saveImgCase, getImagesPetById, getCoverImagesPet };
